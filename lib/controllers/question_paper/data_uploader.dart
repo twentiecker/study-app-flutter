@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+import '../../model/question_paper_model.dart';
+
 class DataUploader extends GetxController {
   /* calls only once to upload data */
   @override
@@ -22,11 +24,16 @@ class DataUploader extends GetxController {
         .where((path) =>
             path.startsWith('assets/DB/papers') && path.contains('.json'))
         .toList();
-    print(paperInAssets);
+    // print(paperInAssets);
+    /* create variable list from QuestionPaperModel */
+    List<QuestionPaperModel> questionPapers = [];
     /* read the content of the file that we get from paperInAssets */
     for (var paper in paperInAssets) {
       String stringPaperContent = await rootBundle.loadString(paper);
-      print(stringPaperContent);
+      questionPapers.add(QuestionPaperModel.fromJson(json.decode(stringPaperContent)));
+      // print(stringPaperContent);
     }
+    // print('Items number ${questionPapers.length}');
+    // print(questionPapers[0].questions![2].id);
   }
 }
