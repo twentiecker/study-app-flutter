@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+import '../../firebase_ref/loading_status.dart';
 import '../../firebase_ref/references.dart';
 import '../../model/question_paper_model.dart';
 
@@ -15,7 +16,12 @@ class DataUploader extends GetxController {
     super.onReady();
   }
 
+  /* create observable variable */
+  final loadingStatus = LoadingStatus.loading.obs;
+
   Future<void> uploadData() async {
+    /* set status "loading" as default one for uploading data */
+    loadingStatus.value = LoadingStatus.loading;
     /* create fireStore instance */
     final fireStore = FirebaseFirestore.instance;
     /* loading all assets folder into 'AssetManifest.json' */
@@ -60,9 +66,18 @@ class DataUploader extends GetxController {
           "question": questions.question,
           "correct_answer": questions.correctAnswer
         });
+        /* create answers to firebase as new collection and data */
+        for (var answers in questions.answers) {
+          final answerPath =
+              questionPath.collection('answers').doc(answers.identifier);
+          batch.set(answerPath,
+              {"identifier": answers.identifier, "answer": answers.answer});
+        }
       }
     }
     /* submit batch into firebase database */
     await batch.commit();
+    /* change status from "loading" into "completed" one */
+    loadingStatus.value = LoadingStatus.completed;
   }
 }
