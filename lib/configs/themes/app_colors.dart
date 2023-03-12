@@ -4,6 +4,8 @@ import 'app_dark_themes.dart';
 import 'app_light_themes.dart';
 import 'ui_parameters.dart';
 
+const Color onSurfaceTextColor = Colors.white;
+
 const mainGradientLight = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
