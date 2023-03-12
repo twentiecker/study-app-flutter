@@ -1,4 +1,4 @@
-# study_app
+# Study App
 
 A new Flutter project.
 
@@ -12,9 +12,13 @@ A few resources to get you started if this is your first Flutter project:
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
 For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+[online documentation](https://docs.flutter.dev/), which offers tutorials, samples, guidance on
+mobile development, and a full API reference.
 
 ## Adjustment
 
-- We use minSdkVersion 21 for compatibility issue in Cloud Firestore (required sdk 19)
+- minSdkVersion 21 for compatibility issue in Cloud Firestore (required sdk 19) at
+  android/app/build.gradle
+- Flutter 3.7.7 • channel stable • https://github.com/flutter/flutter.git
+  Framework • revision 2ad6cd72c0 (4 days ago) • 2023-03-08 09:41:59 -0800 Engine • revision
+  1837b5be5f Tools • Dart 2.19.4 • DevTools 2.20.1
