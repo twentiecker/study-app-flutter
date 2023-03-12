@@ -47,7 +47,12 @@ android {
         applicationId "com.example.learning_app"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
-        minSdkVersion flutter.minSdkVersion
+        /* change locally into sdk 21 for compatibility issue of     *
+        *  firebase minimum sdk for firebase 19, but if we use 19,   *
+        *  the app won't be executed cz .dex multiple problem. Thats *
+        *  why we need to use "sdk 21" to cover it.                  */
+        // minSdkVersion flutter.minSdkVersion
+        minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
