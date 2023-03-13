@@ -1,9 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class QuestionPaperModel {
   String id;
   String title;
   String? imageUrl;
   String description;
   int timeSeconds;
+
+  /* additional param from firebase database */
+  int questionsCount;
   List<Questions>? questions;
 
   QuestionPaperModel(
@@ -12,6 +17,8 @@ class QuestionPaperModel {
       this.imageUrl,
       required this.description,
       required this.timeSeconds,
+      /* additional param from firebase database */
+      required this.questionsCount,
       this.questions});
 
   QuestionPaperModel.fromJson(Map<String, dynamic> json)
@@ -20,9 +27,23 @@ class QuestionPaperModel {
         imageUrl = json['image_url'] as String,
         description = json['Description'] as String,
         timeSeconds = json['time_seconds'],
+        /* additional param from firebase database */
+        questionsCount = 0,
         questions = (json['questions'] as List)
             .map((dynamic e) => Questions.fromJson(e as Map<String, dynamic>))
             .toList();
+
+  /* model for get the data from firebase database  *
+  *  NOTE!! make sure the "key" is same as database */
+  QuestionPaperModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> json)
+      : id = json.id,
+        title = json['title'],
+        imageUrl = json['image_url'],
+        description = json['description'],
+        timeSeconds = json['time_seconds'],
+        questionsCount = json['questions_count'] as int,
+        /* just define arbitary (in this case empty list) */
+        questions = [];
 
   // if (json['questions'] != null) {
   //   questions = new List<Questions>();

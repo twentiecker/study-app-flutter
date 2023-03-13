@@ -8,23 +8,17 @@ import 'package:learning_app/firebase_options.dart';
 import 'package:learning_app/routes/app_routes.dart';
 import 'package:learning_app/screens/introduction/introduction_screen.dart';
 import 'package:learning_app/screens/splash/splash_screen.dart';
-
 import 'bindings/initial_bindings.dart';
 import 'configs/themes/app_dark_themes.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  /* inject dependencies from bindings */
+  /* inject dependencies with bindings */
   InitialBindings().dependencies();
+  /* initialize Firebase */
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
-
-// Future<void> main() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-//   /* initialize Firebase and add plugins */
-//   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-//   runApp(const MyApp());
-// }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -32,17 +26,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    /* use GetMaterialApp to call DataUploaderScreen to create controller instance */
+    /* use GetMaterialApp to create controller instance */
     return GetMaterialApp(
+      /* function to import data */
+      // home: DataUploaderScreen(),
       theme: Get.find<ThemeController>().lightTheme,
       // theme: LightTheme().buildLightTheme(),
       // theme: DarkTheme().buildDarkTheme(),
       getPages: AppRoutes.routes(),
     );
-
-    // /* use GetMaterialApp to call DataUploaderScreen to create controller instance */
-    // return GetMaterialApp(
-    //   home: DataUploaderScreen(),
-    // );
   }
 }

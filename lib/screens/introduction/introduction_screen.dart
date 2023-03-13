@@ -2,11 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:learning_app/widgets/app_circle_button.dart';
-
 import '../../configs/themes/app_colors.dart';
+import '../../services/firebase_storage_service.dart';
 
 class IntroductionScreen extends StatelessWidget {
   const IntroductionScreen({Key? key}) : super(key: key);
+
+  void homeRoute(){
+    Get.offAllNamed("/home");
+    Get.put(FirebaseStorageService());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +38,7 @@ class IntroductionScreen extends StatelessWidget {
             ),
             SizedBox(height: 40),
             AppCircleButton(
-              onTap: () => null,
+              onTap: homeRoute,
               child: Icon(
                 Icons.arrow_forward,
                 size: 35,

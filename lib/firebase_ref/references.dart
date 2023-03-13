@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 final fireStore = FirebaseFirestore.instance;
 /* create collection references,  *
@@ -16,3 +17,6 @@ DocumentReference questionRF(
     /* we looking for paperId as parent of the questions and then create *
     *  collection name called "questions" with the neme of questionId.   */
     questionPaperRF.doc(paperId).collection("questions").doc(questionId);
+
+/* initiate instance for firebase storage */
+Reference get firebaseStorage => FirebaseStorage.instance.ref();
