@@ -45,6 +45,8 @@ class QuestionPaperModel {
         /* just define arbitary (in this case empty list) */
         questions = [];
 
+  String timeInMinutes() => "${(timeSeconds / 60).ceil()} mins";
+
   // if (json['questions'] != null) {
   //   questions = new List<Questions>();
   //   json['questions'].forEach((v) {
