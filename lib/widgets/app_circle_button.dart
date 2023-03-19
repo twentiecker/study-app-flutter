@@ -17,8 +17,11 @@ class AppCircleButton extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       shape: CircleBorder(),
       child: InkWell(
-        child: child,
         onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: child,
+        ),
       ),
     );
   }
