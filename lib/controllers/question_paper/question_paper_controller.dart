@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
+import 'package:learning_app/controllers/auth_controller.dart';
 import 'package:learning_app/firebase_ref/references.dart';
 import 'package:learning_app/services/firebase_storage_service.dart';
 import '../../model/question_paper_model.dart';
@@ -31,7 +32,8 @@ class QuestionPaperController extends GetxController {
 
       /* loop through imgName to get the image url from firebase storage */
       for (var paper in paperList) {
-        final imgUrl = await Get.find<FirebaseStorageService>().getImage(paper.title);
+        final imgUrl =
+            await Get.find<FirebaseStorageService>().getImage(paper.title);
         paper.imageUrl = imgUrl;
 
         // final imgUrl = await Get.find<FirebaseStorageService>().getImage(img);
@@ -39,8 +41,26 @@ class QuestionPaperController extends GetxController {
         // allPaperImages.add(imgUrl!);
       }
       allPapers.assignAll(paperList);
-    } catch (e) {
-      print(e);
+    } catch (error) {
+      // AppLogger.e(error)
+      print(error);
+    }
+  }
+
+  void navigateToQuestions(
+      {required QuestionPaperModel paper, bool tryAgain = false}) {
+    AuthController _authController = Get.find();
+    if (_authController.isLoggedIn()) {
+      if (tryAgain) {
+        Get.back();
+        // Get.offNamed(page);
+      } else {
+        // print('Already logged in');
+        // Get.toNamed(page);
+      }
+    } else {
+      // print('The title is: ${paper.title}');
+      _authController.showLoginAlertDialogue();
     }
   }
 }
