@@ -7,9 +7,9 @@ import 'package:learning_app/widgets/common/main_button.dart';
 
 // class LoginScreen extends StatelessWidget {
 class LoginScreen extends GetView<AuthController> {
-  const LoginScreen({Key? key}) : super(key: key);
-
   static const String routeName = "/login";
+
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
