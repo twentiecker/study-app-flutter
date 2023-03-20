@@ -16,9 +16,9 @@ import '../../widgets/content_area.dart';
 
 /* in case if there is unconditional error, maybe this is the problem */
 class HomeScreen extends GetView<MyZoomDrawerController> {
-// class HomeScreen extends StatelessWidget {
   static const String routeName = "/home";
 
+  // class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override

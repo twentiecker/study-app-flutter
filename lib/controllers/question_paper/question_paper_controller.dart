@@ -4,6 +4,7 @@ import 'package:learning_app/controllers/auth_controller.dart';
 import 'package:learning_app/firebase_ref/references.dart';
 import 'package:learning_app/services/firebase_storage_service.dart';
 import '../../model/question_paper_model.dart';
+import '../../screens/question/questions_screen.dart';
 
 class QuestionPaperController extends GetxController {
   // /* define list reacted variable of images with as obs */
@@ -56,7 +57,8 @@ class QuestionPaperController extends GetxController {
         // Get.offNamed(page);
       } else {
         // print('Already logged in');
-        // Get.toNamed(page);
+        /* sent paper model into QuestionsScreen with arguments */
+        Get.toNamed(QuestionsScreen.routeName, arguments: paper);
       }
     } else {
       // print('The title is: ${paper.title}');

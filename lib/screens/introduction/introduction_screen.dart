@@ -6,9 +6,11 @@ import '../../configs/themes/app_colors.dart';
 import '../../services/firebase_storage_service.dart';
 
 class IntroductionScreen extends StatelessWidget {
+  static const String routeName = "/introduction";
+
   const IntroductionScreen({Key? key}) : super(key: key);
 
-  void homeRoute(){
+  void homeRoute() {
     Get.offAllNamed("/home");
     Get.put(FirebaseStorageService());
   }
