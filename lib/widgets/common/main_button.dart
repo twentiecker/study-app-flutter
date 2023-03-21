@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:learning_app/configs/themes/app_colors.dart';
 
 class MainButton extends StatelessWidget {
@@ -25,18 +26,25 @@ class MainButton extends StatelessWidget {
       child: SizedBox(
         height: 55,
         child: InkWell(
-          onTap: enabled==false?null:onTap,
+          onTap: enabled == false ? null : onTap,
           child: Container(
             width: double.maxFinite,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              color: color??Theme.of(context).cardColor
-            ),
+                borderRadius: BorderRadius.circular(15),
+                color: color ?? Theme.of(context).cardColor),
             child: Padding(
               padding: const EdgeInsets.all(10),
-              child: child??Center(
-                child: Text(title, style: const TextStyle(fontWeight: FontWeight.bold, color: onSurfaceTextColor),),
-              ),
+              child: child ??
+                  Center(
+                    child: Text(
+                      title,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Get.isDarkMode
+                              ? onSurfaceTextColor
+                              : Theme.of(context).primaryColor),
+                    ),
+                  ),
             ),
           ),
         ),

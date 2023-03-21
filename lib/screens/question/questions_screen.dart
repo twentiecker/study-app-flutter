@@ -4,9 +4,12 @@ import 'package:get/get.dart';
 import 'package:learning_app/firebase_ref/loading_status.dart';
 import 'package:learning_app/widgets/common/question_place_holder.dart';
 
+import '../../configs/themes/app_colors.dart';
 import '../../configs/themes/custom_text_styles.dart';
+import '../../configs/themes/ui_parameters.dart';
 import '../../controllers/question_paper/questions_controller.dart';
 import '../../widgets/common/background_decoration.dart';
+import '../../widgets/common/main_button.dart';
 import '../../widgets/content_area.dart';
 import '../../widgets/questions/answer_card.dart';
 
@@ -68,12 +71,55 @@ class QuestionsScreen extends GetView<QuestionsController> {
                                               ),
                                       itemCount: controller.currentQuestion
                                           .value!.answers.length);
-                                })
+                                }),
                           ],
                         ),
                       ),
                     ),
-                  )
+                  ),
+                ColoredBox(
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                  child: Padding(
+                    padding: UIParameters.mobileScreenPadding,
+                    child: Row(
+                      children: [
+                        Visibility(
+                            // visible: true,
+                            visible: controller.isFirstQuestion,
+                            child: SizedBox(
+                              width: 55,
+                              height: 55,
+                              child: MainButton(
+                                onTap: () {
+                                  controller.prevQuestion();
+                                },
+                                child: Icon(
+                                  Icons.arrow_back_ios_new,
+                                  color: Get.isDarkMode
+                                      ? onSurfaceTextColor
+                                      : Theme.of(context).primaryColor,
+                                ),
+                              ),
+                            )),
+                        Expanded(
+                          child: Visibility(
+                              visible: controller.loadingStatus.value ==
+                                  LoadingStatus.completed,
+                              child: MainButton(
+                                onTap: () {
+                                  controller.isLastQuestion
+                                      ? Container()
+                                      : controller.nextQuestion();
+                                },
+                                title: controller.isLastQuestion
+                                    ? 'Complete'
+                                    : 'Next',
+                              )),
+                        )
+                      ],
+                    ),
+                  ),
+                )
               ],
             )),
       ),
