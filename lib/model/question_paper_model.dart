@@ -35,13 +35,14 @@ class QuestionPaperModel {
 
   /* model for get the data from firebase database  *
   *  NOTE!! make sure the "key" is same as database */
-  QuestionPaperModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> json)
-      : id = json.id,
-        title = json['title'],
-        imageUrl = json['image_url'],
-        description = json['description'],
-        timeSeconds = json['time_seconds'],
-        questionsCount = json['questions_count'] as int,
+  QuestionPaperModel.fromSnapshot(
+      DocumentSnapshot<Map<String, dynamic>> snapshot)
+      : id = snapshot.id,
+        title = snapshot['title'],
+        imageUrl = snapshot['image_url'],
+        description = snapshot['description'],
+        timeSeconds = snapshot['time_seconds'],
+        questionsCount = snapshot['questions_count'] as int,
         /* just define arbitary (in this case empty list) */
         questions = [];
 
@@ -73,6 +74,8 @@ class Questions {
   String question;
   List<Answers> answers;
   String? correctAnswer;
+  /* add new variable which used to get selected answer from user */
+  String? selectedAnswer;
 
   Questions(
       {required this.id,
@@ -93,6 +96,13 @@ class Questions {
         //   });
         // }
         correctAnswer = json['correct_answer'];
+
+  /* method to get data from firebase with snapshot */
+  Questions.fromSnapshot(QueryDocumentSnapshot<Map<String, dynamic>> snapshot)
+      : id = snapshot.id,
+        question = snapshot['question'],
+        answers = [],
+        correctAnswer = snapshot['correct_answer'];
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
@@ -117,6 +127,11 @@ class Answers {
   Answers.fromJson(Map<String, dynamic> json)
       : identifier = json['identifier'],
         answer = json['Answer'];
+
+  /* method to get data from firebase with snapshot */
+  Answers.fromSnapshot(QueryDocumentSnapshot<Map<String, dynamic>> snapshot)
+      : identifier = snapshot['identifier'] as String?,
+        answer = snapshot['answer'] as String?;
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();

@@ -44,6 +44,7 @@ mobile development, and a full API reference.
     </dict>
 </array>
 ```
+- Add internet permission in AndroidManifest.xml. It's located in android/app/src/main
 
 ## Just in Case
 
