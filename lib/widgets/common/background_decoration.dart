@@ -23,7 +23,7 @@ class BackgroundDecoration extends StatelessWidget {
             painter: BackgroundPainter(),
           ),
         )),
-        Positioned(child: child)
+        Positioned.fill(child: SafeArea(child: child))
       ],
     );
   }
@@ -50,8 +50,8 @@ class BackgroundPainter extends CustomPainter {
 
     final pathRight = Path();
     pathRight.moveTo(size.width, 0);
-    pathRight.lineTo(size.width*0.8, 0);
-    pathRight.lineTo(size.width*0.2, size.height);
+    pathRight.lineTo(size.width * 0.8, 0);
+    pathRight.lineTo(size.width * 0.2, size.height);
     pathRight.lineTo(size.width, size.height);
     pathRight.close();
     canvas.drawPath(pathRight, paint);

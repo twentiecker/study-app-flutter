@@ -6,6 +6,7 @@ import '../controllers/zoom_drawer_controller.dart';
 import '../screens/home/home_screen.dart';
 import '../screens/introduction/introduction_screen.dart';
 import '../screens/login/login_screen.dart';
+import '../screens/question/questions_overview_screen.dart';
 import '../screens/splash/splash_screen.dart';
 
 class AppRoutes {
@@ -26,7 +27,11 @@ class AppRoutes {
             name: QuestionsScreen.routeName,
             page: () => QuestionsScreen(),
             binding: BindingsBuilder(() {
-              Get.put(QuestionsController());
+              /* defining <QuestionsController> cz we have set an "id" in QuestionsScreen */
+              Get.put<QuestionsController>(QuestionsController());
             })),
+        GetPage(
+            name: QuestionsOverviewScreen.routeName,
+            page: () => QuestionsOverviewScreen()),
       ];
 }

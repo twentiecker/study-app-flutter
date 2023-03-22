@@ -2,13 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:learning_app/firebase_ref/loading_status.dart';
+import 'package:learning_app/screens/question/questions_overview_screen.dart';
 import 'package:learning_app/widgets/common/question_place_holder.dart';
+import 'package:learning_app/widgets/questions/countdown_timer.dart';
 
 import '../../configs/themes/app_colors.dart';
 import '../../configs/themes/custom_text_styles.dart';
 import '../../configs/themes/ui_parameters.dart';
 import '../../controllers/question_paper/questions_controller.dart';
 import '../../widgets/common/background_decoration.dart';
+import '../../widgets/common/custom_app_bar.dart';
 import '../../widgets/common/main_button.dart';
 import '../../widgets/content_area.dart';
 import '../../widgets/questions/answer_card.dart';
@@ -23,6 +26,25 @@ class QuestionsScreen extends GetView<QuestionsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: CustomAppBar(
+        leading: Container(
+            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            decoration: ShapeDecoration(
+                shape: StadiumBorder(
+                    side: BorderSide(color: onSurfaceTextColor, width: 2))),
+            child: Obx(() => CountdownTimer(
+                  time: controller.time.value,
+                  color: onSurfaceTextColor,
+                ))),
+        showActionIcon: true,
+        titleWidget: Obx(
+          () => Text(
+            "Q. ${(controller.questionIndex.value + 1).toString().padLeft(2, '0')}",
+            style: appBarText,
+          ),
+        ),
+      ),
       body: BackgroundDecoration(
         child: Obx(() => Column(
               children: [
@@ -108,7 +130,8 @@ class QuestionsScreen extends GetView<QuestionsController> {
                               child: MainButton(
                                 onTap: () {
                                   controller.isLastQuestion
-                                      ? Container()
+                                      ? Get.toNamed(
+                                          QuestionsOverviewScreen.routeName)
                                       : controller.nextQuestion();
                                 },
                                 title: controller.isLastQuestion
