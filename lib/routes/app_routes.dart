@@ -7,6 +7,7 @@ import '../screens/home/home_screen.dart';
 import '../screens/introduction/introduction_screen.dart';
 import '../screens/login/login_screen.dart';
 import '../screens/question/questions_overview_screen.dart';
+import '../screens/question/result_screen.dart';
 import '../screens/splash/splash_screen.dart';
 
 class AppRoutes {
@@ -33,5 +34,6 @@ class AppRoutes {
         GetPage(
             name: QuestionsOverviewScreen.routeName,
             page: () => QuestionsOverviewScreen()),
+        GetPage(name: ResultScreen.routeName, page: () => ResultScreen()),
       ];
 }

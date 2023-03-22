@@ -10,6 +10,7 @@ import 'package:learning_app/widgets/questions/countdown_timer.dart';
 
 import '../../configs/themes/ui_parameters.dart';
 import '../../widgets/common/custom_app_bar.dart';
+import '../../widgets/common/main_button.dart';
 import '../../widgets/questions/question_number_card.dart';
 
 // class QuestionsOverviewScreen extends StatelessWidget {
@@ -73,7 +74,19 @@ class QuestionsOverviewScreen extends GetView<QuestionsController> {
                   )
                 ],
               ),
-            ))
+            )),
+            ColoredBox(
+              color: Theme.of(context).scaffoldBackgroundColor,
+              child: Padding(
+                padding: UIParameters.mobileScreenPadding,
+                child: MainButton(
+                  onTap: () {
+                    controller.complete();
+                  },
+                  title: 'Complete',
+                ),
+              ),
+            )
           ],
         ),
       ),

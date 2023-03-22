@@ -6,6 +6,8 @@ import 'package:learning_app/firebase_ref/loading_status.dart';
 
 import '../../firebase_ref/references.dart';
 import '../../model/question_paper_model.dart';
+import '../../screens/home/home_screen.dart';
+import '../../screens/question/result_screen.dart';
 
 class QuestionsController extends GetxController {
   final loadingStatus = LoadingStatus.loading.obs;
@@ -106,7 +108,7 @@ class QuestionsController extends GetxController {
   _startTimer(int seconds) {
     const duration = Duration(seconds: 1);
     remainSeconds = seconds;
-    Timer.periodic(duration, (Timer timer) {
+    _timer = Timer.periodic(duration, (Timer timer) {
       if (remainSeconds == 0) {
         timer.cancel();
       } else {
@@ -117,5 +119,10 @@ class QuestionsController extends GetxController {
         remainSeconds--;
       }
     });
+  }
+
+  void complete() {
+    _timer!.cancel();
+    Get.offAllNamed(ResultScreen.routeName);
   }
 }
