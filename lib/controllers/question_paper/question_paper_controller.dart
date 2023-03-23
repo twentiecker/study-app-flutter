@@ -7,9 +7,6 @@ import '../../model/question_paper_model.dart';
 import '../../screens/question/questions_screen.dart';
 
 class QuestionPaperController extends GetxController {
-  // /* define list reacted variable of images with as obs */
-  // final allPaperImages = <String>[].obs;
-
   /* define data for papers from firebase database */
   final allPapers = <QuestionPaperModel>[].obs;
 
@@ -20,9 +17,6 @@ class QuestionPaperController extends GetxController {
   }
 
   Future<void> getAllPapers() async {
-    // /* name of the file in firebase storage */
-    // List<String> imgName = ["biology", "chemistry", "maths", "physics"];
-
     try {
       /* getting all data from firebase database */
       QuerySnapshot<Map<String, dynamic>> data = await questionPaperRF.get();
@@ -36,10 +30,6 @@ class QuestionPaperController extends GetxController {
         final imgUrl =
             await Get.find<FirebaseStorageService>().getImage(paper.title);
         paper.imageUrl = imgUrl;
-
-        // final imgUrl = await Get.find<FirebaseStorageService>().getImage(img);
-        // /* save all the image url into list */
-        // allPaperImages.add(imgUrl!);
       }
       allPapers.assignAll(paperList);
     } catch (error) {

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:learning_app/controllers/question_paper/data_uploader.dart';
-
 import '../../firebase_ref/loading_status.dart';
 
 class DataUploaderScreen extends StatelessWidget {

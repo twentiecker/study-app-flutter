@@ -12,7 +12,7 @@ class AppIconText extends StatelessWidget {
     return Row(
       children: [
         icon,
-        SizedBox(
+        const SizedBox(
           width: 4,
         ),
         text

@@ -4,12 +4,12 @@ import 'package:learning_app/configs/themes/app_colors.dart';
 
 mixin SubThemeData {
   TextTheme getTextThemes() {
-    return GoogleFonts.quicksandTextTheme(TextTheme(
+    return GoogleFonts.quicksandTextTheme(const TextTheme(
         bodyText1: TextStyle(fontWeight: FontWeight.w400),
         bodyText2: TextStyle(fontWeight: FontWeight.w400)));
   }
 
   IconThemeData getIconTheme() {
-    return IconThemeData(color: onSurfaceTextColor, size: 16);
+    return const IconThemeData(color: onSurfaceTextColor, size: 16);
   }
 }

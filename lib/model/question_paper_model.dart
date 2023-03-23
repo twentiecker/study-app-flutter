@@ -48,13 +48,6 @@ class QuestionPaperModel {
 
   String timeInMinutes() => "${(timeSeconds / 60).ceil()} mins";
 
-  // if (json['questions'] != null) {
-  //   questions = new List<Questions>();
-  //   json['questions'].forEach((v) {
-  //     questions.add(new Questions.fromJson(v));
-  //   });
-  // }
-
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
@@ -62,9 +55,6 @@ class QuestionPaperModel {
     data['image_url'] = this.imageUrl;
     data['Description'] = this.description;
     data['time_seconds'] = this.timeSeconds;
-    // if (this.questions != null) {
-    //   data['questions'] = this.questions.map((v) => v.toJson()).toList();
-    // }
     return data;
   }
 }
@@ -74,6 +64,7 @@ class Questions {
   String question;
   List<Answers> answers;
   String? correctAnswer;
+
   /* add new variable which used to get selected answer from user */
   String? selectedAnswer;
 
@@ -89,12 +80,6 @@ class Questions {
         answers = (json['answers'] as List)
             .map((dynamic e) => Answers.fromJson(e as Map<String, dynamic>))
             .toList(),
-        // if (json['answers'] != null) {
-        //   answers = new List<Answers>();
-        //   json['answers'].forEach((v) {
-        //     answers.add(new Answers.fromJson(v));
-        //   });
-        // }
         correctAnswer = json['correct_answer'];
 
   /* method to get data from firebase with snapshot */
@@ -140,16 +125,3 @@ class Answers {
     return data;
   }
 }
-
-// class Answer {
-//   String? identifier;
-//   String? answer;
-//
-//   /* create constructor */
-//   Answer({this.identifier, this.answer});
-//
-//   /* assign the value of JSON to variable */
-//   Answer.fromJSON(Map<String, dynamic> json)
-//       : identifier = json['identifier'] as String?,
-//         answer = json['Answer'] as String?;
-// }

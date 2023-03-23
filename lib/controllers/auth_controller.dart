@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:learning_app/firebase_ref/references.dart';
-
 import '../screens/home/home_screen.dart';
 import '../screens/login/login_screen.dart';
 import '../widgets/dialogs/dialogue_widget.dart';
@@ -20,7 +19,7 @@ class AuthController extends GetxController {
 
   void initAuth() async {
     /* set delayed time for 2 sec */
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     _auth = FirebaseAuth.instance;
     _authStateChanges = _auth.authStateChanges();
     _authStateChanges.listen((User? user) {

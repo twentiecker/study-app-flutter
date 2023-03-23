@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:learning_app/configs/themes/app_colors.dart';
@@ -37,15 +36,15 @@ class MyMenuScreen extends GetView<MyZoomDrawerController> {
                 child: Column(
                   children: [
                     Obx(() => controller.user.value == null
-                        ? SizedBox()
+                        ? const SizedBox()
                         : Text(
                             controller.user.value!.displayName ?? '',
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontWeight: FontWeight.w900,
                                 fontSize: 18,
                                 color: onSurfaceTextColor),
                           )),
-                    Spacer(
+                    const Spacer(
                       flex: 1,
                     ),
                     _DrawerButton(
@@ -66,7 +65,7 @@ class MyMenuScreen extends GetView<MyZoomDrawerController> {
                         onPressed: () => controller.email(),
                       ),
                     ),
-                    Spacer(
+                    const Spacer(
                       flex: 4,
                     ),
                     _DrawerButton(

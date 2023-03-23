@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:learning_app/configs/themes/custom_text_styles.dart';
 import 'package:learning_app/screens/question/questions_overview_screen.dart';
-
 import '../../configs/themes/app_icons.dart';
 import '../../configs/themes/ui_parameters.dart';
 import '../app_circle_button.dart';
@@ -48,14 +46,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             children: [
               leading ??
                   Transform.translate(
-                      offset: Offset(-14, 0), child: BackButton()),
+                      offset: const Offset(-14, 0), child: const BackButton()),
               if (showActionIcon)
                 Transform.translate(
-                  offset: Offset(10, 0),
+                  offset: const Offset(10, 0),
                   child: AppCircleButton(
-                    child: Icon(AppIcons.menu),
                     onTap: onMenuActionTap ??
                         () => Get.toNamed(QuestionsOverviewScreen.routeName),
+                    child: const Icon(AppIcons.menu),
                   ),
                 )
             ],
@@ -66,5 +64,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size(double.maxFinite, 80);
+  Size get preferredSize => const Size(double.maxFinite, 80);
 }

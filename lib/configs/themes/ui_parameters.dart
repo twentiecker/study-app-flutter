@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 const double _mobileScreenPadding = 25.0;
 const double _cardBorderRadius = 10.0;
@@ -14,7 +13,7 @@ class UIParameters {
       BorderRadius.circular(_cardBorderRadius);
 
   static EdgeInsets get mobileScreenPadding =>
-      EdgeInsets.all(_mobileScreenPadding);
+      const EdgeInsets.all(_mobileScreenPadding);
 
   static bool isDarkMode() {
     return Get.isDarkMode ? true : false;

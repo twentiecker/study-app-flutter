@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
@@ -7,7 +6,6 @@ import 'package:learning_app/controllers/zoom_drawer_controller.dart';
 import 'package:learning_app/screens/home/menu_screen.dart';
 import 'package:learning_app/screens/home/question_card.dart';
 import 'package:learning_app/widgets/app_circle_button.dart';
-
 import '../../configs/themes/app_colors.dart';
 import '../../configs/themes/app_icons.dart';
 import '../../configs/themes/custom_text_styles.dart';
@@ -37,7 +35,7 @@ class HomeScreen extends GetView<MyZoomDrawerController> {
           backgroundColor: Colors.white.withOpacity(0.5),
           slideWidth: MediaQuery.of(context).size.width * 0.6,
           controller: _.zoomDrawerController,
-          menuScreen: MyMenuScreen(),
+          menuScreen: const MyMenuScreen(),
           mainScreen: Container(
             decoration: BoxDecoration(gradient: mainGradient()),
             child: SafeArea(
@@ -51,18 +49,18 @@ class HomeScreen extends GetView<MyZoomDrawerController> {
                       children: [
                         AppCircleButton(
                           onTap: controller.toggleDrawer,
-                          child: Icon(
+                          child: const Icon(
                             AppIcons.menuLeft,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 10),
                           child: Row(
                             children: [
-                              Icon(
+                              const Icon(
                                 AppIcons.peace,
                               ),
                               Text(
@@ -73,7 +71,7 @@ class HomeScreen extends GetView<MyZoomDrawerController> {
                             ],
                           ),
                         ),
-                        Text(
+                        const Text(
                           'What do you want to learn today?',
                           style: headerText,
                         )
@@ -95,7 +93,7 @@ class HomeScreen extends GetView<MyZoomDrawerController> {
                             },
                             separatorBuilder:
                                 (BuildContext context, int index) {
-                              return SizedBox(
+                              return const SizedBox(
                                 height: 20,
                               );
                             },

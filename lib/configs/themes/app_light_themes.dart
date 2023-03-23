@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:learning_app/configs/themes/sub_theme_data_mixin.dart';
 

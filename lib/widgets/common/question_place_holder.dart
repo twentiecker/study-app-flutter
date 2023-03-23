@@ -1,5 +1,4 @@
 import 'package:easy_separator/easy_separator.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -23,7 +22,7 @@ class QuestionPlaceHolder extends StatelessWidget {
       highlightColor: Colors.blueGrey.withOpacity(0.5),
       child: EasySeparatedColumn(
         separatorBuilder: (BuildContext context, int index) {
-          return SizedBox(
+          return const SizedBox(
             height: 20,
           );
         },
@@ -31,7 +30,7 @@ class QuestionPlaceHolder extends StatelessWidget {
           EasySeparatedColumn(
               children: [line, line, line, line],
               separatorBuilder: (BuildContext context, int index) {
-                return SizedBox(
+                return const SizedBox(
                   height: 10,
                 );
               }),

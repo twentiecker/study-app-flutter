@@ -15,7 +15,7 @@ class LoginScreen extends GetView<AuthController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 30),
+        padding: const EdgeInsets.symmetric(horizontal: 30),
         alignment: Alignment.center,
         decoration: BoxDecoration(gradient: mainGradient()),
         child: Column(
@@ -26,8 +26,8 @@ class LoginScreen extends GetView<AuthController> {
               width: 200,
               height: 200,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 60),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 60),
               child: Text(
                 "This is a study app. You can use as you want. You have the full access to all materials in this course",
                 style: TextStyle(

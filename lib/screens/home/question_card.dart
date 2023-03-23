@@ -1,12 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:learning_app/configs/themes/custom_text_styles.dart';
 import 'package:learning_app/configs/themes/ui_parameters.dart';
 import 'package:learning_app/controllers/question_paper/question_paper_controller.dart';
 import 'package:learning_app/model/question_paper_model.dart';
-
 import '../../configs/themes/app_icons.dart';
 import '../../widgets/app_icon_text.dart';
 
@@ -49,7 +47,7 @@ class QuestionCard extends GetView<QuestionPaperController> {
                           imageUrl: model.imageUrl!,
                           placeholder: (context, url) => Container(
                             alignment: Alignment.center,
-                            child: CircularProgressIndicator(),
+                            child: const CircularProgressIndicator(),
                           ),
                           errorWidget: (context, url, error) =>
                               Image.asset("assets/images/app_splash_logo.png"),
@@ -87,7 +85,7 @@ class QuestionCard extends GetView<QuestionPaperController> {
                                         : Theme.of(context).primaryColor),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 15,
                             ),
                             AppIconText(
@@ -117,14 +115,14 @@ class QuestionCard extends GetView<QuestionPaperController> {
                   right: -_padding,
                   child: GestureDetector(
                     child: Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 12, horizontal: 20),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(cardBorderRadius),
                               bottomRight: Radius.circular(cardBorderRadius)),
                           color: Theme.of(context).primaryColor),
-                      child: Icon(AppIcons.trophyOutline),
+                      child: const Icon(AppIcons.trophyOutline),
                     ),
                   ))
             ],

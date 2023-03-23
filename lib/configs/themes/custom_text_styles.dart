@@ -1,9 +1,5 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:learning_app/configs/themes/ui_parameters.dart';
-
 import 'app_colors.dart';
 
 TextStyle cardTitles(context) => TextStyle(

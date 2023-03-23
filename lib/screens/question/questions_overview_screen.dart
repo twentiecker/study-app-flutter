@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:learning_app/configs/themes/custom_text_styles.dart';
@@ -7,7 +6,6 @@ import 'package:learning_app/widgets/common/background_decoration.dart';
 import 'package:learning_app/widgets/content_area.dart';
 import 'package:learning_app/widgets/questions/answer_card.dart';
 import 'package:learning_app/widgets/questions/countdown_timer.dart';
-
 import '../../configs/themes/ui_parameters.dart';
 import '../../widgets/common/custom_app_bar.dart';
 import '../../widgets/common/main_button.dart';
@@ -46,13 +44,13 @@ class QuestionsOverviewScreen extends GetView<QuestionsController> {
                           ))
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Expanded(
                     child: GridView.builder(
                         shrinkWrap: true,
-                        physics: BouncingScrollPhysics(),
+                        physics: const BouncingScrollPhysics(),
                         itemCount: controller.allQuestions.length,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: Get.width ~/ 75,

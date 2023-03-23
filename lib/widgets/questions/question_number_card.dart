@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:learning_app/configs/themes/app_colors.dart';
 import 'package:learning_app/widgets/questions/answer_card.dart';
-
 import '../../configs/themes/ui_parameters.dart';
 
 class QuestionNumberCard extends StatelessWidget {
@@ -42,7 +40,7 @@ class QuestionNumberCard extends StatelessWidget {
       onTap: onTap,
       borderRadius: UIParameters.cardBorderRadius,
       child: Ink(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
             color: _backgroundColor,
             borderRadius: UIParameters.cardBorderRadius),

@@ -1,11 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:learning_app/firebase_ref/loading_status.dart';
 import 'package:learning_app/screens/question/questions_overview_screen.dart';
 import 'package:learning_app/widgets/common/question_place_holder.dart';
 import 'package:learning_app/widgets/questions/countdown_timer.dart';
-
 import '../../configs/themes/app_colors.dart';
 import '../../configs/themes/custom_text_styles.dart';
 import '../../configs/themes/ui_parameters.dart';
@@ -29,8 +27,8 @@ class QuestionsScreen extends GetView<QuestionsController> {
       extendBodyBehindAppBar: true,
       appBar: CustomAppBar(
         leading: Container(
-            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            decoration: ShapeDecoration(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            decoration: const ShapeDecoration(
                 shape: StadiumBorder(
                     side: BorderSide(color: onSurfaceTextColor, width: 2))),
             child: Obx(() => CountdownTimer(
@@ -49,12 +47,13 @@ class QuestionsScreen extends GetView<QuestionsController> {
         child: Obx(() => Column(
               children: [
                 if (controller.loadingStatus.value == LoadingStatus.loading)
-                  Expanded(child: ContentArea(child: QuestionPlaceHolder())),
+                  const Expanded(
+                      child: ContentArea(child: QuestionPlaceHolder())),
                 if (controller.loadingStatus.value == LoadingStatus.completed)
                   Expanded(
                     child: ContentArea(
                       child: SingleChildScrollView(
-                        padding: EdgeInsets.only(top: 25),
+                        padding: const EdgeInsets.only(top: 25),
                         child: Column(
                           children: [
                             Text(
@@ -66,8 +65,9 @@ class QuestionsScreen extends GetView<QuestionsController> {
                                 builder: (context) {
                                   return ListView.separated(
                                       shrinkWrap: true,
-                                      padding: EdgeInsets.only(top: 25),
-                                      physics: NeverScrollableScrollPhysics(),
+                                      padding: const EdgeInsets.only(top: 25),
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
                                       itemBuilder:
                                           (BuildContext context, int index) {
                                         final answer = controller
@@ -88,7 +88,7 @@ class QuestionsScreen extends GetView<QuestionsController> {
                                       },
                                       separatorBuilder:
                                           (BuildContext context, int index) =>
-                                              SizedBox(
+                                              const SizedBox(
                                                 height: 10,
                                               ),
                                       itemCount: controller.currentQuestion

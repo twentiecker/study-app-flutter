@@ -1,6 +1,3 @@
-import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -10,7 +7,6 @@ import 'package:learning_app/controllers/question_paper/questions_controller_ext
 import 'package:learning_app/screens/question/answer_check_screen.dart';
 import 'package:learning_app/widgets/questions/answer_card.dart';
 import 'package:learning_app/widgets/questions/question_number_card.dart';
-
 import '../../configs/themes/custom_text_styles.dart';
 import '../../widgets/common/background_decoration.dart';
 import '../../widgets/common/custom_app_bar.dart';
@@ -30,7 +26,7 @@ class ResultScreen extends GetView<QuestionsController> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: CustomAppBar(
-        leading: SizedBox(
+        leading: const SizedBox(
           height: 80,
         ),
         title: controller.correctAnsweredQuestions,
@@ -54,21 +50,21 @@ class ResultScreen extends GetView<QuestionsController> {
                     'You have ${controller.points} points',
                     style: TextStyle(color: _textColor),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 25,
                   ),
-                  Text(
+                  const Text(
                     'Tap below question number to view correct answer',
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 25,
                   ),
                   Expanded(
                       child: GridView.builder(
                           itemCount: controller.allQuestions.length,
                           shrinkWrap: true,
-                          physics: BouncingScrollPhysics(),
+                          physics: const BouncingScrollPhysics(),
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: Get.width ~/ 75,
@@ -112,7 +108,9 @@ class ResultScreen extends GetView<QuestionsController> {
                         title: 'Try again',
                       ),
                     ),
-                    SizedBox(height: 5,),
+                    const SizedBox(
+                      height: 5,
+                    ),
                     Expanded(
                       child: MainButton(
                         onTap: () {
@@ -121,7 +119,6 @@ class ResultScreen extends GetView<QuestionsController> {
                         title: 'Go home',
                       ),
                     )
-
                   ],
                 ),
               ),

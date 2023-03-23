@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:learning_app/widgets/app_circle_button.dart';
 import '../../configs/themes/app_colors.dart';
 import '../../services/firebase_storage_service.dart';

@@ -13,35 +13,35 @@ import '../screens/splash/splash_screen.dart';
 
 class AppRoutes {
   static List<GetPage> routes() => [
-        GetPage(name: "/", page: () => SplashScreen()),
+        GetPage(name: "/", page: () => const SplashScreen()),
         GetPage(
             name: IntroductionScreen.routeName,
-            page: () => IntroductionScreen()),
+            page: () => const IntroductionScreen()),
         GetPage(
             name: HomeScreen.routeName,
-            page: () => HomeScreen(),
+            page: () => const HomeScreen(),
             binding: BindingsBuilder(() {
               Get.put(QuestionPaperController());
               Get.put(MyZoomDrawerController());
             })),
-        GetPage(name: LoginScreen.routeName, page: () => LoginScreen()),
+        GetPage(name: LoginScreen.routeName, page: () => const LoginScreen()),
         GetPage(
             name: QuestionsScreen.routeName,
-            page: () => QuestionsScreen(),
+            page: () => const QuestionsScreen(),
             binding: BindingsBuilder(() {
               /* defining <QuestionsController> cz we have set an "id" in QuestionsScreen */
               Get.put<QuestionsController>(QuestionsController());
             })),
         GetPage(
             name: QuestionsOverviewScreen.routeName,
-            page: () => QuestionsOverviewScreen()),
+            page: () => const QuestionsOverviewScreen()),
         GetPage(
           name: ResultScreen.routeName,
-          page: () => ResultScreen(),
+          page: () => const ResultScreen(),
         ),
         GetPage(
           name: AnswerCheckScreen.routeName,
-          page: () => AnswerCheckScreen(),
+          page: () => const AnswerCheckScreen(),
         )
       ];
 }

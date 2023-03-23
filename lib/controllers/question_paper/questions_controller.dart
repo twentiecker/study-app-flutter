@@ -1,12 +1,8 @@
 import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:learning_app/controllers/auth_controller.dart';
 import 'package:learning_app/controllers/question_paper/question_paper_controller.dart';
 import 'package:learning_app/firebase_ref/loading_status.dart';
-
 import '../../firebase_ref/references.dart';
 import '../../model/question_paper_model.dart';
 import '../../screens/home/home_screen.dart';

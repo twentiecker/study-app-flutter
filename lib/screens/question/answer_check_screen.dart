@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:learning_app/controllers/question_paper/questions_controller.dart';
@@ -6,7 +5,6 @@ import 'package:learning_app/screens/question/result_screen.dart';
 import 'package:learning_app/widgets/common/custom_app_bar.dart';
 import 'package:learning_app/widgets/content_area.dart';
 import 'package:learning_app/widgets/questions/answer_card.dart';
-
 import '../../configs/themes/custom_text_styles.dart';
 import '../../widgets/common/background_decoration.dart';
 
@@ -36,7 +34,7 @@ class AnswerCheckScreen extends GetView<QuestionsController> {
                 Expanded(
                     child: ContentArea(
                   child: SingleChildScrollView(
-                    padding: EdgeInsets.only(top: 20),
+                    padding: const EdgeInsets.only(top: 20),
                     child: Column(
                       children: [
                         Text(controller.currentQuestion.value!.question),
@@ -45,7 +43,7 @@ class AnswerCheckScreen extends GetView<QuestionsController> {
                             builder: (_) {
                               return ListView.separated(
                                   shrinkWrap: true,
-                                  physics: NeverScrollableScrollPhysics(),
+                                  physics: const NeverScrollableScrollPhysics(),
                                   itemBuilder: (_, index) {
                                     final answer = controller
                                         .currentQuestion.value!.answers[index];
@@ -74,7 +72,7 @@ class AnswerCheckScreen extends GetView<QuestionsController> {
                                         isSelected: false);
                                   },
                                   separatorBuilder: (_, index) {
-                                    return SizedBox(
+                                    return const SizedBox(
                                       height: 10,
                                     );
                                   },

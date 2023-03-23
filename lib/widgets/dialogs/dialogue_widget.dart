@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Dialogs {
@@ -15,7 +14,7 @@ class Dialogs {
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        children: const [
           Text(
             'HI...',
             style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
@@ -23,7 +22,7 @@ class Dialogs {
           Text('Please login before you start')
         ],
       ),
-      actions: [TextButton(onPressed: onTap, child: Text("Confirm"))],
+      actions: [TextButton(onPressed: onTap, child: const Text("Confirm"))],
     );
   }
 }
