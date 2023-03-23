@@ -42,3 +42,64 @@ class AnswerCard extends StatelessWidget {
     );
   }
 }
+
+class CorrectAnswer extends StatelessWidget {
+  final String answer;
+
+  const CorrectAnswer({Key? key, required this.answer}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Ink(
+      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+      decoration: BoxDecoration(
+          borderRadius: UIParameters.cardBorderRadius,
+          color: correctAnswerColor.withOpacity(0.1)),
+      child: Text(
+        answer,
+        style:
+            TextStyle(color: correctAnswerColor, fontWeight: FontWeight.bold),
+      ),
+    );
+  }
+}
+
+class WrongAnswer extends StatelessWidget {
+  final String answer;
+
+  const WrongAnswer({Key? key, required this.answer}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Ink(
+      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+      decoration: BoxDecoration(
+          borderRadius: UIParameters.cardBorderRadius,
+          color: wrongAnswerColor.withOpacity(0.1)),
+      child: Text(
+        answer,
+        style: TextStyle(color: wrongAnswerColor, fontWeight: FontWeight.bold),
+      ),
+    );
+  }
+}
+
+class NotAnswer extends StatelessWidget {
+  final String answer;
+
+  const NotAnswer({Key? key, required this.answer}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Ink(
+      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+      decoration: BoxDecoration(
+          borderRadius: UIParameters.cardBorderRadius,
+          color: notAnswerColor.withOpacity(0.1)),
+      child: Text(
+        answer,
+        style: TextStyle(color: notAnswerColor, fontWeight: FontWeight.bold),
+      ),
+    );
+  }
+}

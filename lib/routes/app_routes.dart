@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:learning_app/controllers/question_paper/questions_controller.dart';
+import 'package:learning_app/screens/question/answer_check_screen.dart';
 import 'package:learning_app/screens/question/questions_screen.dart';
 import '../controllers/question_paper/question_paper_controller.dart';
 import '../controllers/zoom_drawer_controller.dart';
@@ -34,6 +35,13 @@ class AppRoutes {
         GetPage(
             name: QuestionsOverviewScreen.routeName,
             page: () => QuestionsOverviewScreen()),
-        GetPage(name: ResultScreen.routeName, page: () => ResultScreen()),
+        GetPage(
+          name: ResultScreen.routeName,
+          page: () => ResultScreen(),
+        ),
+        GetPage(
+          name: AnswerCheckScreen.routeName,
+          page: () => AnswerCheckScreen(),
+        )
       ];
 }

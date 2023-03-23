@@ -1,7 +1,10 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:learning_app/controllers/auth_controller.dart';
+import 'package:learning_app/controllers/question_paper/question_paper_controller.dart';
 import 'package:learning_app/firebase_ref/loading_status.dart';
 
 import '../../firebase_ref/references.dart';
@@ -74,7 +77,7 @@ class QuestionsController extends GetxController {
 
   void selectedAnswer(String? answer) {
     currentQuestion.value!.selectedAnswer = answer;
-    update(['answers_list']);
+    update(['answers_list', 'answer_review_list']);
   }
 
   void nextQuestion() {
@@ -97,10 +100,10 @@ class QuestionsController extends GetxController {
     return '$answers out of ${allQuestions.length} answered';
   }
 
-  void jumpToQuestion(int index, {bool isGoback = true}) {
+  void jumpToQuestion(int index, {bool isGoBack = true}) {
     questionIndex.value = index;
     currentQuestion.value = allQuestions[index];
-    if (isGoback) {
+    if (isGoBack) {
       Get.back();
     }
   }
@@ -123,6 +126,16 @@ class QuestionsController extends GetxController {
 
   void complete() {
     _timer!.cancel();
-    Get.offAllNamed(ResultScreen.routeName);
+    Get.offAndToNamed(ResultScreen.routeName);
+  }
+
+  void tryAgain() {
+    Get.find<QuestionPaperController>()
+        .navigateToQuestions(paper: questionPaperModel, tryAgain: true);
+  }
+
+  void navigateToHome() {
+    _timer!.cancel();
+    Get.offNamedUntil(HomeScreen.routeName, (route) => false);
   }
 }
