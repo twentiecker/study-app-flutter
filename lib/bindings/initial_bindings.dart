@@ -8,5 +8,6 @@ class InitialBindings implements Bindings {
   void dependencies() {
     Get.put(ThemeController());
     Get.put(AuthController(), permanent: true);
+    Get.lazyPut(() => FirebaseStorageService());
   }
 }

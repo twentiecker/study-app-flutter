@@ -49,6 +49,3 @@ mobile development, and a full API reference.
 ## Just in Case
 
 - I change main function to "Future with async" to accommodate firebase initialization
-- I add homeRoute function at "introduction_screen" and then set it in "onTap" properties
-- Initialization of "FirebaseStorageService" happen before "QuestionPaperController" which is not
-  same like the master one
