@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:learning_app/configs/themes/app_colors.dart';
 import 'package:learning_app/configs/themes/custom_text_styles.dart';
 import 'package:learning_app/controllers/question_paper/questions_controller.dart';
 import 'package:learning_app/widgets/common/background_decoration.dart';
@@ -74,7 +75,7 @@ class QuestionsOverviewScreen extends GetView<QuestionsController> {
               ),
             )),
             ColoredBox(
-              color: Theme.of(context).scaffoldBackgroundColor,
+              color: customScaffoldColor(context),
               child: Padding(
                 padding: UIParameters.mobileScreenPadding,
                 child: MainButton(

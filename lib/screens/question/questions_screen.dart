@@ -100,7 +100,7 @@ class QuestionsScreen extends GetView<QuestionsController> {
                     ),
                   ),
                 ColoredBox(
-                  color: Theme.of(context).scaffoldBackgroundColor,
+                  color: customScaffoldColor(context),
                   child: Padding(
                     padding: UIParameters.mobileScreenPadding,
                     child: Row(
@@ -123,6 +123,9 @@ class QuestionsScreen extends GetView<QuestionsController> {
                                 ),
                               ),
                             )),
+                        SizedBox(
+                          width: 5,
+                        ),
                         Expanded(
                           child: Visibility(
                               visible: controller.loadingStatus.value ==

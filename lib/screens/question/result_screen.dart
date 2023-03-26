@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:learning_app/configs/themes/app_colors.dart';
 import 'package:learning_app/configs/themes/ui_parameters.dart';
 import 'package:learning_app/controllers/question_paper/questions_controller.dart';
 import 'package:learning_app/controllers/question_paper/questions_controller_extension.dart';
@@ -94,7 +95,7 @@ class ResultScreen extends GetView<QuestionsController> {
               ),
             )),
             ColoredBox(
-              color: Theme.of(context).scaffoldBackgroundColor,
+              color: customScaffoldColor(context),
               child: Padding(
                 padding: UIParameters.mobileScreenPadding,
                 child: Row(
@@ -109,7 +110,7 @@ class ResultScreen extends GetView<QuestionsController> {
                       ),
                     ),
                     const SizedBox(
-                      height: 5,
+                      width: 5,
                     ),
                     Expanded(
                       child: MainButton(

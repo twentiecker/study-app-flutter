@@ -5,7 +5,6 @@ import 'package:learning_app/configs/themes/ui_parameters.dart';
 import 'package:learning_app/controllers/zoom_drawer_controller.dart';
 import 'package:learning_app/screens/home/menu_screen.dart';
 import 'package:learning_app/screens/home/question_card.dart';
-import 'package:learning_app/widgets/app_circle_button.dart';
 import '../../configs/themes/app_colors.dart';
 import '../../configs/themes/app_icons.dart';
 import '../../configs/themes/custom_text_styles.dart';
@@ -47,14 +46,12 @@ class HomeScreen extends GetView<MyZoomDrawerController> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        AppCircleButton(
+                        InkWell(
                           onTap: controller.toggleDrawer,
-                          child: const Icon(
-                            AppIcons.menuLeft,
-                          ),
+                          child: const Icon(AppIcons.menuLeft),
                         ),
                         const SizedBox(
-                          height: 10,
+                          height: 20,
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 10),
@@ -63,16 +60,25 @@ class HomeScreen extends GetView<MyZoomDrawerController> {
                               const Icon(
                                 AppIcons.peace,
                               ),
-                              Text(
-                                'Hello Friends',
-                                style: detailText.copyWith(
-                                    color: onSurfaceTextColor),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Obx(
+                                () => controller.user.value == null
+                                    ? Text('Hello Friends',
+                                        style: detailText.copyWith(
+                                            color: onSurfaceTextColor))
+                                    : Text(
+                                        'Hello ${controller.user.value!.displayName}',
+                                        style: detailText.copyWith(
+                                            color: onSurfaceTextColor),
+                                      ),
                               )
                             ],
                           ),
                         ),
                         const Text(
-                          'What do you want to learn today?',
+                          'What Do You Want To Learn Today?',
                           style: headerText,
                         )
                       ],

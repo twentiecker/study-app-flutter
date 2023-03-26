@@ -28,12 +28,13 @@ class QuestionPlaceHolder extends StatelessWidget {
         },
         children: [
           EasySeparatedColumn(
-              children: [line, line, line, line],
+              children: [line, line, line],
               separatorBuilder: (BuildContext context, int index) {
                 return const SizedBox(
                   height: 10,
                 );
               }),
+          answer,
           answer,
           answer,
           answer
