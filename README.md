@@ -1,37 +1,47 @@
-# Edu2Play Application
+# Aplikasi Mobile Latihan Soal Berbasis Gamifikasi: Edu2Play
 
-Application for educational purpose.
+Aplikasi ini dibuat dalam rangka memenuhi tugas besar kuliah Desain Aplikasi Interaksi.
 
-## Getting Started
+## Instalasi
 
-This project is a starting point for a Flutter application.
+### Clone Kode Aplikasi
 
-A few resources to get you started if this is your first Flutter project:
+```
+git clone https://github.com/twentiecker/study-app-flutter.git
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Instalasi Dependency
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials, samples, guidance on
-mobile development, and a full API reference.
+Jalankan command di bawah ini pada terminal di root folder
 
-## Additional Information
+```
+flutter pub get
+```
 
-- Using Firebase CLI to configure flutter application with firebase database
-- minSdkVersion 21 for compatibility issue in Cloud Firestore (required sdk 19) at
-  android/app/build.gradle
-- Flutter 3.7.7 • channel stable • https://github.com/flutter/flutter.git
-  Framework • revision 2ad6cd72c0 (4 days ago) • 2023-03-08 09:41:59 -0800 Engine • revision
-  1837b5be5f Tools • Dart 2.19.4 • DevTools 2.20.1
-- Add rules for users in Firestore Database to read and write
-- Generate SHA-1 and SHA-256 for android app with "gradlew" in android folder and then paste them
-  into "Project Settings" of firebase
-- Modify "google-service.json" in app folder of android with the latest one which is got from "
+### Build Aplikasi
+
+Jalankan command di bawah ini pada terminal di root folder
+
+```
+flutter build apk
+```
+
+## Penyesuaian Kode
+
+- Set <code>minSdkVersion 21</code> for compatibility issue in Cloud Firestore (required sdk 19) at
+  <code>android/app/build.gradle</code>
+- Modify classpath <code>'com.android.tools.build:gradle:7.3.1'</code> at <code>
+  android/build.gradle</code>
+- Add internet permission <code><uses-permission android:name="android.permission.INTERNET"
+  /></code> in AndroidManifest.xml. It's located in android/app/src/main
+- Modify rules in Firestore Database to read and write (collection name)
+- Generate SHA-1 and SHA-256 for android app with <code>.\gradlew signingReport</code> in android
+  folder and then paste them into "Project Settings" of firebase
+- Run command "flutter clean" in root folder to get fresh code
+- Modify "google-service.json" in <code>android/app</code> with the latest one which is got from "
   Project Settings"
-- Run command "flutter clean" in root folder
-- FOR iOS ONLY!!! add this script below into "info.plist" file and then don't forget to run
-  command "flutter clean"
-- Add internet permission in AndroidManifest.xml. It's located in android/app/src/main
+- FOR iOS ONLY!!! add this script below into "info.plist" file at <code>ios/Runner</code> and then
+  don't forget to run command "flutter clean"
 
 ```
 <key>CFBundleURLTypes</key>
@@ -47,6 +57,11 @@ mobile development, and a full API reference.
 </array>
 ```
 
-## Just in Case
+## Dokumentasi Flutter
 
-- I change main function to "Future with async" to accommodate firebase initialization
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials, samples, guidance on
+mobile development, and a full API reference.

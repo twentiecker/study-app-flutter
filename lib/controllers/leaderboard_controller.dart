@@ -66,8 +66,8 @@ class LeaderboardController extends GetxController {
     // print(allUser.map((e) => print(e.listTest[e.listTest.length - 1].points)));
 
     // sorting data with global points value
-    allUser.sort((b, a) => a.listTest[a.listTest.length - 1].points
-        .compareTo(b.listTest[b.listTest.length - 1].points));
+    allUser.sort((b, a) => (double.parse(a.listTest[a.listTest.length - 1].points))
+        .compareTo(double.parse(b.listTest[b.listTest.length - 1].points)));
 
     // assign the final data
     allUserFinal.assignAll(allUser);
