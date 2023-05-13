@@ -5,12 +5,12 @@ import 'package:learning_app/configs/themes/custom_text_styles.dart';
 import 'package:learning_app/controllers/question_paper/questions_controller.dart';
 import 'package:learning_app/widgets/common/background_decoration.dart';
 import 'package:learning_app/widgets/content_area.dart';
-import 'package:learning_app/widgets/questions/answer_card.dart';
-import 'package:learning_app/widgets/questions/countdown_timer.dart';
+import 'package:learning_app/widgets/question/answer_card.dart';
+import 'package:learning_app/widgets/question/countdown_timer.dart';
 import '../../configs/themes/ui_parameters.dart';
 import '../../widgets/common/custom_app_bar.dart';
 import '../../widgets/common/main_button.dart';
-import '../../widgets/questions/question_number_card.dart';
+import '../../widgets/question/question_number_card.dart';
 
 // class QuestionsOverviewScreen extends StatelessWidget {
 class QuestionsOverviewScreen extends GetView<QuestionsController> {
@@ -63,6 +63,8 @@ class QuestionsOverviewScreen extends GetView<QuestionsController> {
                           if (controller.allQuestions[index].selectedAnswer !=
                               null) {
                             _answerStatus = AnswerStatus.answered;
+                          } else {
+                            _answerStatus = AnswerStatus.notanswered;
                           }
                           return QuestionNumberCard(
                             index: index + 1,

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:learning_app/firebase_ref/loading_status.dart';
 import 'package:learning_app/screens/question/questions_overview_screen.dart';
 import 'package:learning_app/widgets/common/question_place_holder.dart';
-import 'package:learning_app/widgets/questions/countdown_timer.dart';
+import 'package:learning_app/widgets/question/countdown_timer.dart';
 import '../../configs/themes/app_colors.dart';
 import '../../configs/themes/custom_text_styles.dart';
 import '../../configs/themes/ui_parameters.dart';
@@ -12,17 +12,19 @@ import '../../widgets/common/background_decoration.dart';
 import '../../widgets/common/custom_app_bar.dart';
 import '../../widgets/common/main_button.dart';
 import '../../widgets/content_area.dart';
-import '../../widgets/questions/answer_card.dart';
+import '../../widgets/question/answer_card.dart';
 
 // class QuestionsScreen extends StatelessWidget {
 class QuestionsScreen extends GetView<QuestionsController> {
-  // questionsscreen
   static const String routeName = "/questions";
 
   const QuestionsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // if (controller.time == "14:55") {
+    //   Get.toNamed(QuestionsOverviewScreen.routeName);
+    // }
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: CustomAppBar(
@@ -55,6 +57,7 @@ class QuestionsScreen extends GetView<QuestionsController> {
                       child: SingleChildScrollView(
                         padding: const EdgeInsets.only(top: 25),
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               controller.currentQuestion.value!.question,
@@ -123,7 +126,7 @@ class QuestionsScreen extends GetView<QuestionsController> {
                                 ),
                               ),
                             )),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         Expanded(

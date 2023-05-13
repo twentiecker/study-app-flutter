@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:learning_app/configs/themes/app_colors.dart';
-import 'package:learning_app/widgets/questions/answer_card.dart';
+import 'package:learning_app/widgets/question/answer_card.dart';
 import '../../configs/themes/ui_parameters.dart';
 
 class QuestionNumberCard extends StatelessWidget {
@@ -50,7 +50,7 @@ class QuestionNumberCard extends StatelessWidget {
           style: TextStyle(
               color: status == AnswerStatus.notanswered
                   ? Theme.of(context).primaryColor
-                  : null),
+                  : Colors.white),
         )),
       ),
     );

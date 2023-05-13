@@ -16,13 +16,16 @@ class Dialogs {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: const [
           Text(
-            'HI...',
+            'Hi...',
             style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
           ),
           Text('Please login before you start')
         ],
       ),
-      actions: [TextButton(onPressed: onTap, child: const Text("Confirm"))],
+      actions: [Padding(
+        padding: const EdgeInsets.only(right: 10),
+        child: TextButton(onPressed: onTap, child: const Text("Confirm")),
+      )],
     );
   }
 }

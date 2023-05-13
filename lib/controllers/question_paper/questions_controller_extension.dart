@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:learning_app/controllers/question_paper/questions_controller.dart';
-
 import '../../firebase_ref/references.dart';
 import '../auth_controller.dart';
 
@@ -26,11 +25,11 @@ extension QuestionsControllerExtension on QuestionsController {
 
   Future<void> saveTestResults() async {
     var batch = fireStore.batch();
-    User? _user = Get.find<AuthController>().getUser();
-    if (_user == null) return;
+    User? user = Get.find<AuthController>().getUser();
+    if (user == null) return;
     batch.set(
         userRF
-            .doc(_user.email)
+            .doc(user.email)
             .collection('myrecent_tests')
             .doc(questionPaperModel.id),
         {

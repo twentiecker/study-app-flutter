@@ -5,6 +5,9 @@ import 'package:learning_app/configs/themes/app_colors.dart';
 import 'package:learning_app/configs/themes/ui_parameters.dart';
 import 'package:learning_app/controllers/zoom_drawer_controller.dart';
 import 'package:learning_app/screens/login/login_screen.dart';
+import '../board/leaderboard_screen.dart';
+import '../profile/profile_screen.dart';
+import 'home_screen.dart';
 
 // class MyMenuScreen extends StatelessWidget {
 class MyMenuScreen extends GetView<MyZoomDrawerController> {
@@ -81,32 +84,52 @@ class MyMenuScreen extends GetView<MyZoomDrawerController> {
                     const Spacer(
                       flex: 1,
                     ),
+
+                    _DrawerButton(
+                      icon: Icons.home_outlined,
+                      label: "Home",
+                      onPressed: () => Get.toNamed(HomeScreen.routeName),
+                    ),
+                    Obx(() => controller.user.value != null
+                        ? _DrawerButton(
+                            icon: Icons.person_outline_rounded,
+                            label: "Profile",
+                            onPressed: () =>
+                                Get.toNamed(ProfileScreen.routeName),
+                          )
+                        : const SizedBox()),
+                    _DrawerButton(
+                      icon: Icons.leaderboard_outlined,
+                      label: "Leaderboard",
+                      onPressed: () => Get.toNamed(LeaderboardScreen.routeName),
+                    ),
                     _DrawerButton(
                       icon: Icons.web,
-                      label: "Website",
+                      label: "LMS PPTIK",
                       onPressed: () => controller.website(),
                     ),
-                    _DrawerButton(
-                      icon: Icons.facebook,
-                      label: "Facebook",
-                      onPressed: () => controller.facebook(),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 25),
-                      child: _DrawerButton(
-                        icon: Icons.email,
-                        label: "Email",
-                        onPressed: () => controller.email(),
-                      ),
-                    ),
+                    // _DrawerButton(
+                    //   icon: Icons.facebook,
+                    //   label: "Facebook",
+                    //   onPressed: () => controller.facebook(),
+                    // ),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(left: 25),
+                    //   child: _DrawerButton(
+                    //     icon: Icons.email,
+                    //     label: "Email",
+                    //     onPressed: () => controller.email(),
+                    //   ),
+                    // ),
                     const Spacer(
                       flex: 4,
                     ),
-                    _DrawerButton(
-                      icon: Icons.logout,
-                      label: "Sign out",
-                      onPressed: () => controller.signOut(),
-                    )
+                    Obx(() => controller.user.value != null
+                        ? _DrawerButton(
+                            icon: Icons.logout,
+                            label: "Sign out",
+                            onPressed: () => controller.signOut())
+                        : const SizedBox())
                   ],
                 ),
               )
@@ -134,7 +157,7 @@ class _DrawerButton extends StatelessWidget {
         onPressed: onPressed,
         icon: Icon(
           icon,
-          size: 15,
+          size: 25,
         ),
         label: Text(label));
   }

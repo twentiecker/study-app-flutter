@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:learning_app/controllers/auth_controller.dart';
+import 'package:learning_app/controllers/question_paper/questions_controller.dart';
 import 'package:learning_app/firebase_ref/references.dart';
 import 'package:learning_app/services/firebase_storage_service.dart';
+import '../../app_logger.dart';
 import '../../model/question_paper_model.dart';
 import '../../screens/question/questions_screen.dart';
 
@@ -33,27 +35,27 @@ class QuestionPaperController extends GetxController {
       }
       allPapers.assignAll(paperList);
     } catch (error) {
-      // AppLogger.e(error)
-      print(error);
+      AppLogger.e(error);
     }
   }
 
   void navigateToQuestions(
       {required QuestionPaperModel paper, bool tryAgain = false}) {
-    AuthController _authController = Get.find();
-    if (_authController.isLoggedIn()) {
+    AuthController authController = Get.find();
+    if (authController.isLoggedIn()) {
       if (tryAgain) {
         Get.back();
         Get.toNamed(QuestionsScreen.routeName,
             arguments: paper, preventDuplicates: false);
+        /* reinitialize controller to reset all the answer */
+        Get.put(QuestionsController());
       } else {
-        // print('Already logged in');
         /* sent paper model into QuestionsScreen with arguments */
         Get.toNamed(QuestionsScreen.routeName, arguments: paper);
       }
     } else {
       // print('The title is: ${paper.title}');
-      _authController.showLoginAlertDialogue();
+      authController.showLoginAlertDialogue();
     }
   }
 }

@@ -2,9 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:learning_app/firebase_ref/references.dart';
+import '../app_logger.dart';
 import '../screens/home/home_screen.dart';
 import '../screens/login/login_screen.dart';
-import '../widgets/dialogs/dialogue_widget.dart';
+import '../widgets/dialog/dialogue_widget.dart';
 
 class AuthController extends GetxController {
   @override
@@ -13,8 +14,9 @@ class AuthController extends GetxController {
     super.onReady();
   }
 
-  late FirebaseAuth _auth;
+  final GoogleSignIn googleSignIn = GoogleSignIn();
   final _user = Rxn<User>();
+  late FirebaseAuth _auth;
   late Stream<User?> _authStateChanges;
 
   void initAuth() async {
@@ -29,21 +31,18 @@ class AuthController extends GetxController {
   }
 
   signInWithGoogle() async {
-    final GoogleSignIn _googleSignIn = GoogleSignIn();
     try {
-      GoogleSignInAccount? account = await _googleSignIn.signIn();
+      GoogleSignInAccount? account = await googleSignIn.signIn();
       if (account != null) {
-        final _authAccount = await account.authentication;
-        final _credential = GoogleAuthProvider.credential(
-            idToken: _authAccount.idToken,
-            accessToken: _authAccount.accessToken);
-        await _auth.signInWithCredential(_credential);
+        final authAccount = await account.authentication;
+        final credential = GoogleAuthProvider.credential(
+            idToken: authAccount.idToken, accessToken: authAccount.accessToken);
+        await _auth.signInWithCredential(credential);
         await saveUser(account);
         navigateToHomePage();
       }
     } on Exception catch (error) {
-      // AppLogger.e(error);
-      print(error);
+      AppLogger.e(error);
     }
   }
 
@@ -58,17 +57,16 @@ class AuthController extends GetxController {
       "name": account.displayName,
       "profilepic": account.photoUrl
     });
+    print(account.photoUrl);
   }
 
   Future<void> signOut() async {
-    // AppLogger.d('Sign out');
     try {
+      await googleSignIn.disconnect();
       await _auth.signOut();
       navigateToHomePage();
-      print("You are logged out");
     } on FirebaseAuthException catch (error) {
-      // AppLogger.e(error);
-      print(error);
+      AppLogger.e(error);
     }
   }
 

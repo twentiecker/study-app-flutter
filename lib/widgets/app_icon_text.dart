@@ -3,8 +3,10 @@ import 'package:flutter/cupertino.dart';
 class AppIconText extends StatelessWidget {
   final Icon icon;
   final Widget text;
+  final double width;
 
-  const AppIconText({Key? key, required this.icon, required this.text})
+  const AppIconText(
+      {Key? key, required this.icon, required this.text, this.width = 4})
       : super(key: key);
 
   @override
@@ -12,8 +14,8 @@ class AppIconText extends StatelessWidget {
     return Row(
       children: [
         icon,
-        const SizedBox(
-          width: 4,
+        SizedBox(
+          width: width,
         ),
         text
       ],

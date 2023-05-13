@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:learning_app/controllers/question_paper/question_paper_controller.dart';
 import 'package:learning_app/firebase_ref/loading_status.dart';
+import '../../app_logger.dart';
 import '../../firebase_ref/references.dart';
 import '../../model/question_paper_model.dart';
 import '../../screens/home/home_screen.dart';
@@ -24,9 +25,8 @@ class QuestionsController extends GetxController {
 
   @override
   void onReady() {
-    final _questionsPaper = Get.arguments as QuestionPaperModel;
-    print(_questionsPaper.id);
-    loadData(_questionsPaper);
+    final questionsPaper = Get.arguments as QuestionPaperModel;
+    loadData(questionsPaper);
     super.onReady();
   }
 
@@ -43,21 +43,21 @@ class QuestionsController extends GetxController {
           .map((snapshot) => Questions.fromSnapshot(snapshot))
           .toList();
       questionPaper.questions = questions;
-      for (Questions _question in questionPaperModel.questions!) {
+      for (Questions question in questionPaperModel.questions!) {
         final QuerySnapshot<Map<String, dynamic>> answersQuery =
             await questionPaperRF
                 .doc(questionPaper.id)
                 .collection("questions")
-                .doc(_question.id)
+                .doc(question.id)
                 .collection("answers")
                 .get();
         final answers = answersQuery.docs
             .map((answer) => Answers.fromSnapshot(answer))
             .toList();
-        _question.answers = answers;
+        question.answers = answers;
       }
     } catch (error) {
-      print(error.toString());
+      AppLogger.e(error);
     }
     if (questionPaper.questions != null &&
         questionPaper.questions!.isNotEmpty) {
@@ -126,6 +126,8 @@ class QuestionsController extends GetxController {
   }
 
   void tryAgain() {
+    /* delete controller (reset them all) */
+    Get.delete<QuestionsController>();
     Get.find<QuestionPaperController>()
         .navigateToQuestions(paper: questionPaperModel, tryAgain: true);
   }

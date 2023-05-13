@@ -1,29 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
-import 'package:learning_app/configs/themes/ui_parameters.dart';
-import 'package:learning_app/controllers/zoom_drawer_controller.dart';
-import 'package:learning_app/screens/home/menu_screen.dart';
-import 'package:learning_app/screens/home/question_card.dart';
 import '../../configs/themes/app_colors.dart';
 import '../../configs/themes/app_icons.dart';
 import '../../configs/themes/custom_text_styles.dart';
-import '../../controllers/question_paper/question_paper_controller.dart';
+import '../../configs/themes/ui_parameters.dart';
+import '../../controllers/leaderboard_controller.dart';
+import '../../controllers/zoom_drawer_controller.dart';
 import '../../widgets/content_area.dart';
+import '../home/menu_screen.dart';
+import 'leaderboard_card.dart';
 
-/* in case if there is unconditional error, maybe this is the problem */
-class HomeScreen extends GetView<MyZoomDrawerController> {
-  static const String routeName = "/home";
+class LeaderboardScreen extends GetView<MyZoomDrawerController> {
+  static const String routeName = "/leaderboard";
 
-  // class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const LeaderboardScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    QuestionPaperController _questionPaperController = Get.find();
-    /* must have at least one scaffold, unless it will  *
-    *  generate some issues, such as there is underline *
-    *  in your text widget when it displayed in the app */
+    LeaderboardController leaderboardController = Get.find();
     return Scaffold(
       body: GetBuilder<MyZoomDrawerController>(builder: (_) {
         return ZoomDrawer(
@@ -63,22 +58,14 @@ class HomeScreen extends GetView<MyZoomDrawerController> {
                               const SizedBox(
                                 width: 5,
                               ),
-                              Obx(
-                                () => controller.user.value == null
-                                    ? Text('Hello Friends',
-                                        style: detailText.copyWith(
-                                            color: onSurfaceTextColor))
-                                    : Text(
-                                        'Hello ${controller.user.value!.displayName}',
-                                        style: detailText.copyWith(
-                                            color: onSurfaceTextColor),
-                                      ),
-                              )
+                              Text('User Rating Achievement Information',
+                                  style: detailText.copyWith(
+                                      color: onSurfaceTextColor))
                             ],
                           ),
                         ),
                         const Text(
-                          'What Do You Want To Learn Today?',
+                          'Leaderboard',
                           style: headerText,
                         )
                       ],
@@ -88,14 +75,12 @@ class HomeScreen extends GetView<MyZoomDrawerController> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: const [
                       Icon(
-                        Icons.local_library_outlined,
+                        Icons.leaderboard_outlined,
                         size: 150,
                       )
                     ],
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
+                  SizedBox(height: 5,),
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -105,21 +90,23 @@ class HomeScreen extends GetView<MyZoomDrawerController> {
                             padding: UIParameters.mobileScreenPadding,
                             shrinkWrap: true,
                             itemBuilder: (BuildContext context, int index) {
-                              return QuestionCard(
-                                  model: _questionPaperController
-                                      .allPapers[index]);
+                              return LeaderboardCard(
+                                model:
+                                    leaderboardController.allUserFinal[index],
+                                index: index,
+                              );
                             },
                             separatorBuilder:
                                 (BuildContext context, int index) {
                               return const SizedBox(
-                                height: 20,
+                                height: 10,
                               );
                             },
                             itemCount:
-                                _questionPaperController.allPapers.length)),
+                                leaderboardController.allUserFinal.length)),
                       ),
                     ),
-                  ),
+                  )
                 ],
               ),
             ),

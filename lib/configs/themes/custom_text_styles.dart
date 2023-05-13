@@ -11,6 +11,7 @@ TextStyle cardTitles(context) => TextStyle(
 
 TextStyle countdownText(context) => TextStyle(
     letterSpacing: 2,
+    fontWeight: FontWeight.bold,
     color: UIParameters.isDarkMode()
         ? Theme.of(context).textTheme.bodyText1!.color
         : Theme.of(context).primaryColor);

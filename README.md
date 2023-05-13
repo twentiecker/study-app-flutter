@@ -1,6 +1,6 @@
-# Learning App
+# Edu2Play Application
 
-A new Flutter project.
+Application for educational purpose.
 
 ## Getting Started
 
@@ -15,7 +15,7 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials, samples, guidance on
 mobile development, and a full API reference.
 
-## Adjustment
+## Additional Information
 
 - Using Firebase CLI to configure flutter application with firebase database
 - minSdkVersion 21 for compatibility issue in Cloud Firestore (required sdk 19) at
@@ -29,7 +29,9 @@ mobile development, and a full API reference.
 - Modify "google-service.json" in app folder of android with the latest one which is got from "
   Project Settings"
 - Run command "flutter clean" in root folder
-- FOR iOS ONLY!!! add this script below into "info.plist" file and then don't forget to run command "flutter clean"
+- FOR iOS ONLY!!! add this script below into "info.plist" file and then don't forget to run
+  command "flutter clean"
+- Add internet permission in AndroidManifest.xml. It's located in android/app/src/main
 
 ```
 <key>CFBundleURLTypes</key>
@@ -44,7 +46,6 @@ mobile development, and a full API reference.
     </dict>
 </array>
 ```
-- Add internet permission in AndroidManifest.xml. It's located in android/app/src/main
 
 ## Just in Case
 
