@@ -32,7 +32,7 @@ File release apk akan berada pada folder <code>build\app\outputs\flutter-apk</co
 
 - Set <code>minSdkVersion 21</code> for compatibility issue in Cloud Firestore (required sdk 19) at <code>android/app/build.gradle</code>
 - Modify classpath <code>'com.android.tools.build:gradle:7.3.1'</code> at <code>android/build.gradle</code>
-- Add internet permission <code><uses-permission android:name="android.permission.INTERNET"/></code> in AndroidManifest.xml. It's located in android/app/src/main
+- Add internet permission <code>uses-permission android:name="android.permission.INTERNET"</code> in AndroidManifest.xml. It's located in android/app/src/main
 - Modify rules in Firestore Database to read and write (collection name)
 - Generate SHA-1 and SHA-256 for android app with <code>.\gradlew signingReport</code> in android folder and then paste them into "Project Settings" of firebase
 - Run command <code>flutter clean</code> in root folder to get fresh code
